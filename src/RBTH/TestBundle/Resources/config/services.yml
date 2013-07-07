@@ -1,0 +1,7 @@
+parameters:
+#    rbth_test.example.class: RBTH\TestBundle\Example
+
+services:
+#    rbth_test.example:
+#        class: %rbth_test.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

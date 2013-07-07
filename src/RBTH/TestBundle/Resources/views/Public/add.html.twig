@@ -1,0 +1,17 @@
+{% extends 'RBTHTestBundle::public.layout.html.twig'%}
+
+{% block content %}
+    <div class="modal-header">
+        <h3 id="myModalLabel">Опрос</h3>
+    </div>
+    <form method="post" class="ajax" action="{{ path("public_new") }}" {{ form_enctype(form) }}>
+        <div class="modal-body">
+            <p>
+                {{ form_widget(form) }}
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary submit-form">Сохранить</button>
+        </div>
+    </form>
+{% endblock %}

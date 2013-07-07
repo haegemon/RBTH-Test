@@ -1,0 +1,3 @@
+public:
+    resource: "@RBTHTestBundle/Controller/PublicController.php"
+    type:     annotation

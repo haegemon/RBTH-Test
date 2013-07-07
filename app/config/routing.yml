@@ -1,0 +1,4 @@
+rbth_test:
+    resource: "@RBTHTestBundle/Resources/config/routing.yml"
+    prefix:   /
+

@@ -1,0 +1,117 @@
+<?php
+
+namespace RBTH\TestBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * @ORM\Table()
+ * @ORM\Entity()
+ */
+class User
+{
+    public static $sexKinds = array(
+        '0' => 'Не выбранно',
+        '1' => 'Мужчина',
+        '2' => 'Женщина'
+    );
+    
+    public static $childrenKinds = array(
+        '0' => 'Не выбранно',
+        '1' => 'Мужчина',
+        '2' => 'Женщина'
+    );
+
+    public static $familyKinds = array(
+        '0' => 'Не выбранно',
+        '1' => 'Женат/замужем',
+        '2' => 'Холост/не замужем',
+        '3' => 'Разведен (а)',
+        '4' => 'Гражданский брак'
+
+    );
+    public static $educationKinds = array(
+        '0' => 'Не выбранно',
+        '1' => 'Научная степень',
+        '2' => 'незаконченное высшее',
+        '3' => 'среднее специальное',
+        '4' => 'среднее',
+        '5' => 'незаконченное среднее'
+    );
+ 
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", unique=true, nullable=false)
+     * @Assert\NotBlank(message="Поле обязательно для заполнения")
+     */
+    protected $username;
+
+    /**
+     * @ORM\Column(type="string", nullable=false)
+     * @Assert\NotBlank(message="Поле обязательно для заполнения")
+     * @Email(message="Значение не является email-адресом")
+     */
+    protected $email;
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $sex = 0;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $phone = '';
+    
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Поле обязательно для заполнения")
+     */
+    protected $country = '';
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $address = '';
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $postIndex = '';
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $opinion = '';
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $faminyStatus = 0;
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $childrenStatus = 0;
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $countChildren= 0;
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $educationStatus= 0;
+    
+}
