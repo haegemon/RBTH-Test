@@ -14,7 +14,10 @@ class UserType extends AbstractType
         $builder->add(
             $builder->create('username', 'text', array(
                 'required' => true,
-                'label' => 'ФИО'
+                'label' => 'ФИО *',
+                'invalid_message' => "Ожидаются русские буквы",
+                'pattern' => "[А-Яа-яЁё]+\s[А-Яа-яЁё]+\s[А-Яа-яЁё]+"
+
             ))
         );
         $builder->add(
@@ -28,7 +31,7 @@ class UserType extends AbstractType
         $builder->add(
             $builder->create('email', 'email', array(
                 'required' => true,
-                'label' => 'Email'
+                'label' => 'Email *'
             ))
         );
         $builder->add(
@@ -40,7 +43,9 @@ class UserType extends AbstractType
         $builder->add(
             $builder->create('country', 'text', array(
                 'required' => true,
-                'label' => 'Страна'
+                'label' => 'Страна *',
+                'invalid_message' => "Ожидаются русские буквы",
+                'pattern' => "[А-Яа-яЁё]*"
             ))
         );
         $builder->add(
@@ -52,7 +57,8 @@ class UserType extends AbstractType
         $builder->add(
             $builder->create('postIndex', 'text', array(
                 'required' => false,
-                'label' => 'Индекс'
+                'label' => 'Индекс',
+                'pattern' => "[0-9]{6}"
             ))
         );
         $builder->add(
@@ -80,7 +86,9 @@ class UserType extends AbstractType
         $builder->add(
             $builder->create('countChildren', 'integer', array(
                 'required' => false,
-                'label' => 'Сколько детей?'
+                'label' => 'Сколько детей?',
+                'invalid_message' => "Ожидается число"
+
             ))
         );
         $builder->add(
