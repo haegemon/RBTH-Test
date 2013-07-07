@@ -1,1 +1,76 @@
-Hello {{ name }}!
+{% extends 'RBTHTestBundle::public.layout.html.twig'%}
+
+{% block content %}
+    <h3> Результаты опроса</h3>
+
+    <table class="table table-striped">
+        <tr>
+            <td>ФИО</td>
+            <td>Пол</td>
+            <td>Email</td>
+            <td>Телефон</td>
+            <td>Страна</td>
+            <td>Адрес</td>
+            <td>Индекс</td>
+            <td>Что Вы думаете о ...</td>
+            <td>Семейное положение</td>
+            <td>Наличие детей</td>
+            <td>Сколько детей?</td>
+            <td>Образование</td>
+        </tr>
+        {% for user in users%}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{% if user.sex == 0 %}
+                        Не определено
+                    {% elseif  user.sex == 1 %}
+                        Мужчина
+                    {% elseif  user.sex == 2 %}
+                        Женщина
+                    {% endif %}
+                </td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.country }}</td>
+                <td>{{ user.address }}</td>
+                <td>{{ user.postIndex }}</td>
+                <td>{{ user.opinion }}</td>
+                <td>{% if user.faminyStatus == 0 %}
+                        Не выбранно
+                    {% elseif  user.sex == 1 %}
+                        Женат/замужем
+                    {% elseif  user.sex == 2 %}
+                        Холост/не замужем
+                    {% elseif  user.sex == 3 %}
+                        Разведен (а)
+                    {% elseif  user.sex == 4 %}
+                        Гражданский брак
+                    {% endif %}
+                </td>
+                <td>{% if user.childrenStatus == 0 %}
+                        Не определено
+                    {% elseif  user.childrenStatus == 1 %}
+                        Да
+                    {% elseif  user.childrenStatus == 2 %}
+                        Нет
+                    {% endif %}
+                </td>
+                <td>{{ user.countChildren }}</td>
+                <td>{% if user.educationStatus == 0 %}
+                        Не выбранно
+                    {% elseif  user.educationStatus == 1 %}
+                        Научная степень
+                    {% elseif  user.educationStatus == 2 %}
+                        Незаконченное высшее
+                    {% elseif  user.educationStatus == 3 %}
+                        Среднее специальное
+                    {% elseif  user.educationStatus == 4 %}
+                        Среднее
+                    {% elseif  user.educationStatus == 5 %}
+                        Незаконченное среднее
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

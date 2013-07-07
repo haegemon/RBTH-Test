@@ -20,7 +20,10 @@ class PublicController extends Controller
      */
     public function listAction()
     {
-        return array('name' => "test");
+        $users = $this->getDoctrine()
+            ->getRepository('RBTHTestBundle:User')
+            ->findAll();
+        return array('users' => $users);
     }
 
     /**
